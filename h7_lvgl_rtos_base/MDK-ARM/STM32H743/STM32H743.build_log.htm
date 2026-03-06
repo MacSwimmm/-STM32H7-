@@ -1,0 +1,73 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.39.0.0
+Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Argen Argen, Argen, LIC=PE7DL-0PD88-IIZ5V-P1CXJ-1IVFB-6C5E1
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.39.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.39.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.2.0.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\01keil_project\game_pre_freertos\h7_lvgl_rtos_base\MDK-ARM\STM32H743.uvprojx
+Project File Date:  02/26/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'STM32H743'
+compiling ui_comp_hook.c...
+compiling ui_font_Font1.c...
+compiling ui_Screen2.c...
+compiling ui.c...
+compiling ui_Screen1.c...
+compiling my_lvgl_task.c...
+compiling ui_helpers.c...
+..\Middware\LVGL\demos\01_interactive_page\ui_helpers.c(69): warning:  #188-D: enumerated type mixed with another type
+      lv_bar_set_value(target, old + val, anm);
+..\Middware\LVGL\demos\01_interactive_page\ui_helpers.c(75): warning:  #188-D: enumerated type mixed with another type
+      lv_slider_set_value(target, old + val, anm);
+..\Middware\LVGL\demos\01_interactive_page\ui_helpers.c(123): warning:  #144-D: a value of type "void *" cannot be used to initialize an entity of type "screen_destroy_cb_t"
+      screen_destroy_cb_t destroy_cb = lv_event_get_user_data(e);
+..\Middware\LVGL\demos\01_interactive_page\ui_helpers.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=190972 RO-data=29416 RW-data=744 ZI-data=71728  
+FromELF: creating hex file...
+"STM32H743\STM32H743.axf" - 0 Error(s), 3 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.1.0.pack
+                ARM::CMSIS@6.1.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32H7xx_DFP.4.1.2.pack
+                Keil::STM32H7xx_DFP@4.1.2
+                STMicroelectronics STM32H7 Series Device Support
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_STM32H743
+  C:/Users/Arjen/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.0
+      Include file:  CMSIS/Core/Include/tz_context.h
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>
