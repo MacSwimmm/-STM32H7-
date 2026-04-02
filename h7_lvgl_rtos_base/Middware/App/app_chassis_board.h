@@ -7,9 +7,9 @@
 #define chassis_board_task 1
 
 /* 底盘电机速度PID */	/***************待定***************/
-#define MOTOR_SPEED_PID_KP 				2.0f
-#define MOTOR_SPEED_PID_KI 				2.0f
-#define MOTOR_SPEED_PID_KD				2.0f
+#define MOTOR_SPEED_PID_KP 				0.0f
+#define MOTOR_SPEED_PID_KI 				0.0f
+#define MOTOR_SPEED_PID_KD				0.0f
 #define MOTOR_SPEED_PID_MAX_OUT 	120.0f
 #define MOTOR_SPEED_PID_MAX_IOUT	40.0f
 

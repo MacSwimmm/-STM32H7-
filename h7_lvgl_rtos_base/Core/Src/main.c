@@ -34,8 +34,8 @@ void MX_FREERTOS_Init(void);
 /*已使用引脚
 PC13(LED),PA15(KEY),PB10,PB11(OLED),PB12 13 ,14 15, PA11,12  PC11,12(MOTOR_DIR)
 
-PA1_C     ------> TIM2_CH2
-PA0_C     ------> TIM2_CH1
+PB3     ------> TIM2_CH2
+PA5     ------> TIM2_CH1
 PB5     ------> TIM3_CH2
 PB4 (NJTRST)     ------> TIM3_CH1
 PB6     ------> TIM4_CH1           四个编码器

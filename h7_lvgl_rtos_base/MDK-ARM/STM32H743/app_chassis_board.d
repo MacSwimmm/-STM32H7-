@@ -43,6 +43,17 @@ stm32h743\app_chassis_board.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal
 stm32h743\app_chassis_board.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 stm32h743\app_chassis_board.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
 stm32h743\app_chassis_board.o: ..\Drivers\Algorithm\pid.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
+stm32h743\app_chassis_board.o: ../Drivers/User/Inc/FreeRTOSConfig.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\include\projdefs.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\include\portable.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\include\task.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\include\list.h
+stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h
 stm32h743\app_chassis_board.o: ..\Drivers\Hardware\bsp_uart.h
 stm32h743\app_chassis_board.o: ..\Drivers\Hardware\bsp_encoder.h
 stm32h743\app_chassis_board.o: ..\Drivers\Hardware\bsp_motor.h

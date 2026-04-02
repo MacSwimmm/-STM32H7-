@@ -1,4 +1,5 @@
 #include "app_chassis_board.h"
+#include "cmsis_os.h"
 #include "bsp_uart.h"
 #include "bsp_encoder.h"
 #include "bsp_motor.h"
@@ -47,7 +48,7 @@ static void chassis_init(chassis_move_t *chassis_move_init)
     chassis_feedback_update(chassis_move_init);
     
 }
-
+int test = 0;
 /******************************** 核心 ********************************
   * @brief          控制循环，根据控制设定值，进行控制
   * @param[out]     chassis_move_control_loop:"chassis_move"变量指针.
@@ -64,7 +65,8 @@ static void chassis_control_loop(chassis_move_t *chassis_move_control_loop)
                      chassis_move_control_loop->chassis_motor_MG370[i].speed_set);
         
         //输出
-        Motor_SetPWM(chassis_move_control_loop->chas_speed_pid_MG370[i].Out, i);
+//        Motor_SetPWM(chassis_move_control_loop->chas_speed_pid_MG370[i].Out, i);
+			        Motor_SetPWM(test, i);
     }
     
 }

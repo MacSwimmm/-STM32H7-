@@ -6,7 +6,6 @@
 #include "ui.h"
 
 
-
 void my_gui_task(void *argument)
 {
 	lv_init();

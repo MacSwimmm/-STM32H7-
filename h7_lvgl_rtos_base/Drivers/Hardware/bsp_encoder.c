@@ -2,8 +2,8 @@
 #include "tim.h"
 
 
-//PA1C     ------> TIM2_CH2
-//PA0C     ------> TIM2_CH1
+//PB3     ------> TIM2_CH2
+//PA5     ------> TIM2_CH1
 //PB5     ------> TIM3_CH2
 //PB4 (NJTRST)     ------> TIM3_CH1
 //PB6     ------> TIM4_CH1           ËÄ¸ö±àÂëÆ÷
