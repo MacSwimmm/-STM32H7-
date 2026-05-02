@@ -59,9 +59,11 @@
 /* External variables --------------------------------------------------------*/
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern DMA_HandleTypeDef hdma_usart1_tx;
+extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_uart4_rx;
 extern DMA_HandleTypeDef hdma_uart4_tx;
 extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart4;
 extern TIM_HandleTypeDef htim17;
 
@@ -184,24 +186,52 @@ void TIM17_IRQHandler(void)
   /* USER CODE END TIM17_IRQn 1 */
 }
 
+
+/**
+  * @brief This function handles DMA1 stream4 global interrupt.
+  */
+void DMA1_Stream4_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Stream4_IRQn 0 */
+
+  /* USER CODE END DMA1_Stream4_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart2_rx);
+  /* USER CODE BEGIN DMA1_Stream4_IRQn 1 */
+
+  /* USER CODE END DMA1_Stream4_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART2 global interrupt.
+  */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
+}
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
 
 
-// ÊµÏÖTick¹³×Óº¯Êı,lvglÊ±»ù
+// å®ç°Tické’©å­å‡½æ•°,lvglæ—¶åŸº
 void vApplicationTickHook(void)
 {
     static uint32_t tickCount = 0;
     
-    // Ã¿1¸ötickÖ´ĞĞÒ»´Î£¨Èç¹ûconfigTICK_RATE_HZ=1000£©
-    // ÕâÀï·ÅÖÃÒªÖ´ĞĞµÄ´úÂë
-    // ×¢Òâ£º±ØĞë·Ç³£¶ÌĞ¡£¬ÔÚÖĞ¶ÏÉÏÏÂÎÄÖĞÖ´ĞĞ
+    // æ¯1ä¸ªtickæ‰§è¡Œä¸€æ¬¡ï¼ˆå¦‚æœconfigTICK_RATE_HZ=1000ï¼‰
+    // è¿™é‡Œæ”¾ç½®è¦æ‰§è¡Œçš„ä»£ç 
+    // æ³¨æ„ï¼šå¿…é¡»éå¸¸çŸ­å°ï¼Œåœ¨ä¸­æ–­ä¸Šä¸‹æ–‡ä¸­æ‰§è¡Œ
 			lv_tick_inc(1);
 		if (tickCount % 20 == 0)
 		{
 			tickCount = 0;
-		  lv_timer_handler();
+		  //lv_timer_handler();
 		}
     
     tickCount++;

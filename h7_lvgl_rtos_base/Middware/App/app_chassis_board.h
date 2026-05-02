@@ -3,15 +3,21 @@
 
 #include "main.h"
 #include "pid.h"
-
+#include "bsp_QMC5883.h"
 #define chassis_board_task 1
 
-/* µ×ÅÌµç»úËÙ¶ÈPID */	/***************´ı¶¨***************/
-#define MOTOR_SPEED_PID_KP 				0.0f
-#define MOTOR_SPEED_PID_KI 				0.0f
+/* åº•ç›˜ç”µæœºé€Ÿåº¦PID */	
+#define MOTOR_SPEED_PID_KP 				4.1f
+#define MOTOR_SPEED_PID_KI 				0.2f
 #define MOTOR_SPEED_PID_KD				0.0f
 #define MOTOR_SPEED_PID_MAX_OUT 	120.0f
 #define MOTOR_SPEED_PID_MAX_IOUT	40.0f
+
+// å…¨å‘ç§»åŠ¨æ§åˆ¶å˜é‡
+extern float Chassis_Vx_set;
+extern float Chassis_Vy_set;
+extern float Chassis_Wz_set;
+
 
 typedef struct
 {
@@ -24,11 +30,14 @@ typedef struct
 
 typedef struct
 {
-    const double *chassis_INS_angle;              //È¡ÍÓÂİÒÇ½âËã³öµÄÅ·À­½ÇÖ¸Õë
-    PID_t chas_speed_pid_MG370[4];                //µ×ÅÌµç»úËÙ¶Èpid ,0ÎªÇ°×ó£¬1ÎªÇ°ÓÒ£¬2Îªºó×ó£¬3ÎªºóÓÒ
+    const double *chassis_INS_angle;              //å–é™€èºä»ªè§£ç®—å‡ºçš„æ¬§æ‹‰è§’æŒ‡é’ˆ
+		
+    PID_t chas_speed_pid_MG370[4];                //åº•ç›˜ç”µæœºé€Ÿåº¦pid ,0ä¸ºå‰å·¦ï¼Œ1ä¸ºå‰å³ï¼Œ2ä¸ºåå·¦ï¼Œ3ä¸ºåå³
     
-    chassis_motor_t chassis_motor_MG370[4];       //µ×ÅÌµç»úÊı¾İ,0ÎªÇ°×ó£¬1ÎªÇ°ÓÒ£¬2Îªºó×ó£¬3ÎªºóÓÒ
+    chassis_motor_t chassis_motor_MG370[4];       //åº•ç›˜ç”µæœºæ•°æ®,0ä¸ºå‰å·¦ï¼Œ1ä¸ºå‰å³ï¼Œ2ä¸ºåå·¦ï¼Œ3ä¸ºåå³
     
+    EulerAngles qmc_debug_data;
+		
 } chassis_move_t;
 
 extern void chassis_task(void *pvParameters);

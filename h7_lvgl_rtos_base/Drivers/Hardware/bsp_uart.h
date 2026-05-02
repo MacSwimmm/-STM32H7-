@@ -3,27 +3,30 @@
 
 #include "main.h"
 
-/* ÅäÖÃºê¶¨Òå - ¿É¸ù¾İĞèÒªĞŞ¸Ä */
-#define UART_TX_BUFFER_SIZE        256     // ´®¿Ú»º³åÇø´óĞ¡
-#define UART_RX_BUFFER_SIZE        5     // ´®¿Ú½ÓÊÜ»º³åÇø´óĞ¡
+// å‘é€ç¼“å†²åŒºï¼šç”¨äº printf ç±»è°ƒè¯•è¾“å‡º
+#define UART_TX_BUFFER_SIZE 256
+// æ¥æ”¶ç¼“å†²åŒºï¼šGPS NMEA/äºŒè¿›åˆ¶æŠ¥æ–‡ä¼šæ˜æ˜¾é•¿äº 5 å­—èŠ‚ï¼Œå› æ­¤æ‰©åˆ° 512
+#define UART_RX_BUFFER_SIZE 512
 
-#define BLOCK_WAITING_TIME      1000
-
-typedef enum
-{
-	UART_DMA_RX = 0, UART_DMA_ToIdle_RX, UART_IT_RX, UART_IT_ToIdle_RX, UART_Block_RX
-	
-}	UART_RX_MODE;
+#define BLOCK_WAITING_TIME 1000
 
 typedef enum
 {
-	UART_DMA_TX = 0, UART_IT_TX, UART_Block_TX
-	
-}	UART_TX_MODE;
+	UART_DMA_RX = 0,
+	UART_DMA_ToIdle_RX,
+	UART_IT_RX,
+	UART_IT_ToIdle_RX,
+	UART_Block_RX
+} UART_RX_MODE;
+
+typedef enum
+{
+	UART_DMA_TX = 0,
+	UART_IT_TX,
+	UART_Block_TX
+} UART_TX_MODE;
 
 extern void uart_init(UART_HandleTypeDef *huart, uint8_t uart_mode);
 extern int my_uart_printf(UART_HandleTypeDef *huart, uint8_t send_mode, const char *format, ...);
-
-
 
 #endif

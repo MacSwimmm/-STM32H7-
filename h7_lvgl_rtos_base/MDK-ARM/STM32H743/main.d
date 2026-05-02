@@ -184,6 +184,7 @@ stm32h743\main.o: ..\Middware\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os
 stm32h743\main.o: ../Drivers/User/Inc/gpio.h
 stm32h743\main.o: ../Drivers/User/Inc/usart.h
 stm32h743\main.o: ../Drivers/User/Inc/dma.h
+stm32h743\main.o: ../Drivers/User/Inc/i2c.h
 stm32h743\main.o: ..\Middware\LVGL\examples\porting\lv_port_disp_template.h
 stm32h743\main.o: ..\Middware\LVGL\examples\porting\lv_port_indev_template.h
 stm32h743\main.o: ..\Middware\App\my_lvgl_task.h

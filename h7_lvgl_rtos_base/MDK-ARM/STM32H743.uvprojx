@@ -16,8 +16,8 @@
         <TargetCommonOption>
           <Device>STM32H743IITx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32H7xx_DFP.4.1.2</PackID>
-          <PackURL>https://www.keil.com/pack/</PackURL>
+          <PackID>Keil.STM32H7xx_DFP.2.7.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000-0x2001FFFF) IRAM2(0x24000000-0x2407FFFF) IROM(0x8000000-0x81FFFFF) CLOCK(12000000) FPU3(DFPU) CPUTYPE("Cortex-M7") ELITTLE TZ</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -186,7 +186,6 @@
             <RvdsVP>3</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
-            <nBranchProt>0</nBranchProt>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -463,6 +462,16 @@
               <FileName>dma.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Drivers\User\Inc\dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\User\Src\i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\User\Inc\i2c.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2943,6 +2952,16 @@
               <FileType>5</FileType>
               <FilePath>..\Middware\LVGL\demos\01_interactive_page\screens\ui_Screen2.h</FilePath>
             </File>
+            <File>
+              <FileName>app_Navigation.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middware\App\app_Navigation.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_Navigation.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Middware\App\app_Navigation.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3059,14 +3078,34 @@
               <FilePath>..\Drivers\Hardware\bsp_timer.h</FilePath>
             </File>
             <File>
-              <FileName>bsp_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Drivers\Hardware\bsp_uart.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_uart.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Drivers\Hardware\bsp_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_QMC5883.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Hardware\bsp_QMC5883.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_QMC5883.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\Hardware\bsp_QMC5883.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_GPS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Hardware\bsp_GPS.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_GPS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\Hardware\bsp_GPS.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Hardware\bsp_uart.c</FilePath>
             </File>
           </Files>
         </Group>

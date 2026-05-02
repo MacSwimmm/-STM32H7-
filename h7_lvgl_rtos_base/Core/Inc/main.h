@@ -26,6 +26,10 @@
 extern "C" {
 #endif
 
+#define USART2_TX_Pin GPIO_PIN_6
+#define USART2_TX_GPIO_Port GPIOD
+#define USART2_TXA2_Pin GPIO_PIN_2
+#define USART2_TXA2_GPIO_Port GPIOA
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx_hal.h"
 

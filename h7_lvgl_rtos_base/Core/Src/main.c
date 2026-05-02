@@ -9,7 +9,7 @@
 #include "gpio.h"
 #include "usart.h"
 #include "dma.h"
-
+#include "i2c.h"
 
 #include "lvgl.h"
 #include "lv_port_disp_template.h"
@@ -17,35 +17,35 @@
 #include "my_lvgl_task.h"
 
 
-/********************************************** º¯ÊıÉùÃ÷ *******************************************/
+/********************************************** å‡½æ•°å£°æ˜ *******************************************/
 
-void SystemClock_Config(void);		// Ê±ÖÓ³õÊ¼»¯
-void MPU_Config(void);					// MPUÅäÖÃ
+void SystemClock_Config(void);		// æ—¶é’Ÿåˆå§‹åŒ–
+void MPU_Config(void);					// MPUé…ç½®
 void MX_FREERTOS_Init(void);
 	
 /***************************************************************************************************
-*	º¯ Êı Ãû: main
-*	Èë¿Ú²ÎÊı: ÎŞ
-*	·µ »Ø Öµ: ÎŞ
-*	º¯Êı¹¦ÄÜ: LTDCÇı¶¯ÆÁÄ»²âÊÔ
-*	Ëµ    Ã÷: ÎŞ
+*	å‡½ æ•° å: main
+*	å…¥å£å‚æ•°: æ— 
+*	è¿” å› å€¼: æ— 
+*	å‡½æ•°åŠŸèƒ½: LTDCé©±åŠ¨å±å¹•æµ‹è¯•
+*	è¯´    æ˜: æ— 
 ****************************************************************************************************/
 
-/*ÒÑÊ¹ÓÃÒı½Å
+/*å·²ä½¿ç”¨å¼•è„š
 PC13(LED),PA15(KEY),PB10,PB11(OLED),PB12 13 ,14 15, PA11,12  PC11,12(MOTOR_DIR)
 
 PB3     ------> TIM2_CH2
 PA5     ------> TIM2_CH1
 PB5     ------> TIM3_CH2
 PB4 (NJTRST)     ------> TIM3_CH1
-PB6     ------> TIM4_CH1           ËÄ¸ö±àÂëÆ÷
+PB6     ------> TIM4_CH1           å››ä¸ªç¼–ç å™¨
 PB7     ------> TIM4_CH2
 PH10     ------> TIM5_CH1
 PH11     ------> TIM5_CH2
 
 PI6     ------> TIM8_CH2
 PI5     ------> TIM8_CH1
-PI7     ------> TIM8_CH3          ËÄÂ·pwm
+PI7     ------> TIM8_CH3          å››è·¯pwm
 PI2     ------> TIM8_CH4
 
                   FMC GPIO Configuration
@@ -81,37 +81,51 @@ PI13     ------> LTDC_VSYNC
 PK7      ------> LTDC_DE
 PI14     ------> LTDC_CLK 
 														
-PG3(TOUCH SCL),PG7(TOUCH SDA),PI10, PI11,Ã»ÔÚcubemx³õÊ¼»¯ ×¢Òâ
+PG3(TOUCH SCL),PG7(TOUCH SDA),PI10, PI11,æ²¡åœ¨cubemxåˆå§‹åŒ– æ³¨æ„
 
 PC10     ------> UART4_TX
 PH14     ------> UART4_RX
 
 PA10     ------> USART1_RX
 PA9     ------> USART1_TX
+
+
+//---ç£åŠ›è®¡----
+PB8			------>I2C1_SCL 
+PB9			------>I2C1_SDA
+
+
+//---GPS---
+PA2			------>USART2_TX
+PD6			------>USART2_RX
+
+
+
 */
 int main(void)
 { 
-	MPU_Config();				// MPUÅäÖÃ
-	SCB_EnableICache();		// Ê¹ÄÜICache
-	SCB_EnableDCache();		// Ê¹ÄÜDCache
-	HAL_Init();					// ³õÊ¼»¯HAL¿â
-	SystemClock_Config();	// ÅäÖÃÏµÍ³Ê±ÖÓ£¬Ö÷Æµ480MHz
+	MPU_Config();				// MPUé…ç½®
+	SCB_EnableICache();		// ä½¿èƒ½ICache
+	SCB_EnableDCache();		// ä½¿èƒ½DCache
+	HAL_Init();					// åˆå§‹åŒ–HALåº“
+	SystemClock_Config();	// é…ç½®ç³»ç»Ÿæ—¶é’Ÿï¼Œä¸»é¢‘480MHz
 	
-	MX_GPIO_Init();        //Òı½Å³õÊ¼»¯
+	MX_GPIO_Init();        //å¼•è„šåˆå§‹åŒ–
 	MX_DMA_Init();
-  MX_TIM2_Init();    //±àÂëÆ÷
-  MX_TIM4_Init();    //±àÂëÆ÷
+  MX_TIM2_Init();    //ç¼–ç å™¨
+  MX_TIM4_Init();    //ç¼–ç å™¨
   MX_USART1_UART_Init();
-	MX_UART4_Init();   //´®¿Ú¶ÁÈ¡jy61pÊı¾İ
-  MX_TIM3_Init();   //±àÂëÆ÷
-  MX_TIM5_Init();  //±àÂëÆ÷
-  MX_TIM8_Init();  //4Â·PWM²¨
+	MX_USART2_UART_Init();//GPSæ¨¡å—ä½¿ç”¨ä¸²å£2
+	MX_UART4_Init();   //ä¸²å£è¯»å–jy61pæ•°æ®
+  MX_TIM3_Init();   //ç¼–ç å™¨
+  MX_TIM5_Init();  //ç¼–ç å™¨
+  MX_TIM8_Init();  //4è·¯PWMæ³¢
+	MX_I2C1_Init();		//i2cåˆå§‹åŒ–
 	
+	LED_Init();					// åˆå§‹åŒ–LEDå¼•è„š
+	MX_FMC_Init();				// SDRAMåˆå§‹åŒ–
 	
-	LED_Init();					// ³õÊ¼»¯LEDÒı½Å
-	MX_FMC_Init();				// SDRAM³õÊ¼»¯
-	
-	
+
 
   
 	
@@ -214,7 +228,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   
-  /* ÉèÖÃLTDCÊ±ÖÓ£¬ÕâÀïÉèÖÃÎª33MHz£¬¼´Ë¢ĞÂÂÊÔÚ60Ö¡×óÓÒ£¬¹ı¸ß»òÕß¹ıµÍ¶¼»áÔì³ÉÉÁË¸ */
+  /* è®¾ç½®LTDCæ—¶é’Ÿï¼Œè¿™é‡Œè®¾ç½®ä¸º33MHzï¼Œå³åˆ·æ–°ç‡åœ¨60å¸§å·¦å³ï¼Œè¿‡é«˜æˆ–è€…è¿‡ä½éƒ½ä¼šé€ æˆé—ªçƒ */
   /* LCD clock configuration */
   /* PLL3_VCO Input = HSE_VALUE/PLL3M = 1 Mhz */
   /* PLL3_VCO Output = PLL3_VCO Input * PLL3N = 330 Mhz */
@@ -241,17 +255,17 @@ void SystemClock_Config(void)
 }
 
 
-//	ÅäÖÃMPU
+//	é…ç½®MPU
 //
 void MPU_Config(void)
 {
 	MPU_Region_InitTypeDef MPU_InitStruct;
 
-	HAL_MPU_Disable();		// ÏÈ½ûÖ¹MPU
+	HAL_MPU_Disable();		// å…ˆç¦æ­¢MPU
 	
 	MPU_InitStruct.Enable 				= MPU_REGION_ENABLE;
 	MPU_InitStruct.BaseAddress 		= LCD_MemoryAdd;	
-	MPU_InitStruct.Size 					= MPU_REGION_SIZE_512KB;			// Æ¬ÄÚSRAM
+	MPU_InitStruct.Size 					= MPU_REGION_SIZE_512KB;			// ç‰‡å†…SRAM
 	MPU_InitStruct.AccessPermission 	= MPU_REGION_FULL_ACCESS;
 	MPU_InitStruct.IsBufferable 		= MPU_ACCESS_NOT_BUFFERABLE;
 	MPU_InitStruct.IsCacheable 		= MPU_ACCESS_NOT_CACHEABLE;
@@ -277,7 +291,7 @@ void MPU_Config(void)
 
 	HAL_MPU_ConfigRegion(&MPU_InitStruct);
 	
-	HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);	// Ê¹ÄÜMPU
+	HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);	// ä½¿èƒ½MPU
 }
 
 

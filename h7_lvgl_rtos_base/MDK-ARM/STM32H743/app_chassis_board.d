@@ -43,6 +43,8 @@ stm32h743\app_chassis_board.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal
 stm32h743\app_chassis_board.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 stm32h743\app_chassis_board.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
 stm32h743\app_chassis_board.o: ..\Drivers\Algorithm\pid.h
+stm32h743\app_chassis_board.o: ..\Drivers\Hardware\bsp_QMC5883.h
+stm32h743\app_chassis_board.o: ..\Middware\App\app_Navigation.h
 stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h
 stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
 stm32h743\app_chassis_board.o: ../Drivers/User/Inc/FreeRTOSConfig.h
@@ -57,4 +59,5 @@ stm32h743\app_chassis_board.o: ..\Middware\Third_Party\FreeRTOS\Source\CMSIS_RTO
 stm32h743\app_chassis_board.o: ..\Drivers\Hardware\bsp_uart.h
 stm32h743\app_chassis_board.o: ..\Drivers\Hardware\bsp_encoder.h
 stm32h743\app_chassis_board.o: ..\Drivers\Hardware\bsp_motor.h
+stm32h743\app_chassis_board.o: ..\Drivers\Hardware\bsp_GPS.h
 stm32h743\app_chassis_board.o: ../Drivers/User/Inc/usart.h

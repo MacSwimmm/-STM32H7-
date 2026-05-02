@@ -55,4 +55,5 @@ stm32h743\freertos.o: ..\Middware\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsi
 stm32h743\freertos.o: ..\Middware\App\my_lvgl_task.h
 stm32h743\freertos.o: ..\Middware\App\app_chassis_board.h
 stm32h743\freertos.o: ..\Drivers\Algorithm\pid.h
+stm32h743\freertos.o: ..\Drivers\Hardware\bsp_QMC5883.h
 stm32h743\freertos.o: ..\Middware\App\app_key.h

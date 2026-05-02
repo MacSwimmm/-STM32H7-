@@ -16,7 +16,7 @@ void my_gui_task(void *argument)
 	
 	while(1)
 	{
-//		lv_timer_handler();
+		lv_timer_handler();
 		osDelay(20);
 	}
 	
