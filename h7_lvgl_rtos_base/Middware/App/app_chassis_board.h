@@ -18,6 +18,13 @@ extern float Chassis_Vx_set;
 extern float Chassis_Vy_set;
 extern float Chassis_Wz_set;
 
+typedef enum
+{
+    CAR_MODE_GPS = 0,
+    CAR_MODE_INDOOR
+} CarMode_t;
+
+extern volatile CarMode_t car_mode;
 
 typedef struct
 {
@@ -41,6 +48,7 @@ typedef struct
 } chassis_move_t;
 
 extern void chassis_task(void *pvParameters);
+extern void Chassis_SetMode(CarMode_t mode);
+extern void Chassis_Bluetooth_RxPro(uint8_t *pBuf, uint16_t Size);
 
 #endif
-

@@ -46,3 +46,4 @@ stm32h743\bsp_gps.o: ../Drivers/User/Inc/usart.h
 stm32h743\bsp_gps.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 stm32h743\bsp_gps.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 stm32h743\bsp_gps.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+stm32h743\bsp_gps.o: ..\Middware\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h

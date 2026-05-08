@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "cmsis_os2.h" 
 
 static T_GNGGA tgngga;
 static T_GNTHS tgnths;
@@ -30,7 +31,7 @@ void GPS_Init(void)
 	uint8_t ucConfigStep = 1;
 	while (ucConfigStep)
 	{
-		HAL_Delay(500); 
+		osDelay(500); 
 		switch(ucConfigStep++)
 		{
 			case 1:break;
@@ -46,7 +47,7 @@ void GPS_Init(void)
 			case 11:ucConfigStep = 0;break;
 		}
 	}
-	HAL_Delay(500);
+	osDelay(500);
 }
 
 static void GNGGA_Decode(char* str)
